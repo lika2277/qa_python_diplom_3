@@ -2,15 +2,15 @@ import allure
 from pages.orders_feed import PageOrdersFeed
 
 class TestPersonalArea:
-    @allure.title('переход по клику на «Личный кабинет»')
     @staticmethod
+    @allure.title('переход по клику на «Личный кабинет»')
     def test_go_personal_area_page_by_personal_area_button_success(browser, login, personal_area):
         _, user = login
         _, data = personal_area
         assert user.name == data["name"] and user.email.upper() == data["email"].upper()
 
-    @allure.title('переход в раздел «История заказов»')
     @staticmethod
+    @allure.title('переход в раздел «История заказов»')
     def test_go_history_orders_page_from_personal_area_success(browser, personal_area):
         personal_area, _ = personal_area
         personal_area.click_feed_orders()
@@ -18,8 +18,8 @@ class TestPersonalArea:
         orders_feed.is_visible_feed_orders_page()
         assert browser.current_url == orders_feed.get_current_url()
 
-    @allure.title('выход из аккаунта')
     @staticmethod
+    @allure.title('выход из аккаунта')
     def test_exit_from_personal_area_success(browser, login, personal_area):
         login, _ = login
         personal_area, _ = personal_area

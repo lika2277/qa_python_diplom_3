@@ -4,15 +4,14 @@ from pages.personal_area import PagePersonalArea
 from pages.orders_history import PageOrdersHistory
 
 class TestOrderFeed:
-    @allure.title('если кликнуть на заказ, откроется всплывающее окно с деталями')
     @staticmethod
+    @allure.title('если кликнуть на заказ, откроется всплывающее окно с деталями')
     def test_open_pop_up_order_window_success(browser, orders_feed):
         orders_feed.click_random_order()
         assert orders_feed.is_visible_order_details_window()
 
-
-    @allure.title('заказы пользователя из раздела «История заказов» отображаются на странице «Лента заказов»')
     @staticmethod
+    @allure.title('заказы пользователя из раздела «История заказов» отображаются на странице «Лента заказов»')
     def test_check_history_orders_into_orders_food_success(browser, order, main, login):
         _, user = login
         order.create_order_with_authorization(order.gen_ingredients_data(), user)
@@ -33,8 +32,8 @@ class TestOrderFeed:
 
         assert orders_history.list_compare(list_orders_user, list_orders_all)
 
-    @allure.title('при создании нового заказа счётчик Выполнено за всё время увеличивается')
     @staticmethod
+    @allure.title('при создании нового заказа счётчик Выполнено за всё время увеличивается')
     def test_check_increasing_counter_all_time_value_success(browser, main, orders_feed):
         current_count = orders_feed.get_count_all_time()
         orders_feed.make_order(main)
@@ -43,8 +42,8 @@ class TestOrderFeed:
         new_count = orders_feed.get_count_all_time()
         assert (new_count - current_count) == 1
 
-    @allure.title('при создании нового заказа счётчик Выполнено за сегодня увеличивается')
     @staticmethod
+    @allure.title('при создании нового заказа счётчик Выполнено за сегодня увеличивается')
     def test_check_increasing_counter_today_value_success(browser, main, orders_feed):
         current_count = orders_feed.get_count_today()
         orders_feed.make_order(main)
@@ -53,8 +52,8 @@ class TestOrderFeed:
         new_count = orders_feed.get_count_today()
         assert (new_count - current_count) == 1
 
-    @allure.title('после оформления заказа его номер появляется в разделе "В работе"')
     @staticmethod
+    @allure.title('после оформления заказа его номер появляется в разделе "В работе"')
     def test_check_order_number_success(browser, main, orders_feed):
         number_order1 = orders_feed.make_order(main)
         main.click_feed_orders()
