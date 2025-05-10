@@ -1,10 +1,10 @@
 import random
 import allure
 from selenium.webdriver.common.by import By
-from pages.page import Page
+from pages.base import PageBase
 from pages.main import PageMain
 
-class PageOrdersFeed(Page):
+class PageOrdersFeed(PageBase):
     # Заголовок 'Лента заказов'
     locator_title_order_feed = (By.XPATH, ".//h1[text() = 'Лента заказов']")
     # список всех заказов

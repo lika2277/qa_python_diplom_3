@@ -1,8 +1,8 @@
 import allure
 from selenium.webdriver.common.by import By
-from pages.page import Page
+from pages.base import PageBase
 
-class PageOrdersHistory(Page):
+class PageOrdersHistory(PageBase):
     # список заказов пользователя
     locator_list_orders_user = (By.XPATH, ".//div[contains(@class,'OrderHistory_textBox')]/p[contains(@class,'text_type_digits')]")
     # Кнопка "Лист заказов"

@@ -1,8 +1,8 @@
 import allure
 from selenium.webdriver.common.by import By
-from pages.page import Page
+from pages.base import PageBase
 
-class PageLogin(Page):
+class PageLogin(PageBase):
     # Ссылка "Восстановить пароль"
     locator_password_recovery_link = (By.XPATH, ".//a[@href='/forgot-password']")
     # Кнопка "Войти" на форме входа

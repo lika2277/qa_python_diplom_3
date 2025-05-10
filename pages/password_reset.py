@@ -1,8 +1,8 @@
 import allure
-from pages.page import Page
+from pages.base import PageBase
 from selenium.webdriver.common.by import By
 
-class PagePasswordReset(Page):
+class PagePasswordReset(PageBase):
     # Не активное поле ввода нового пароля
     locator_input_password = (By.XPATH, ".//form/fieldset//input[@type='password']")
     # Обводка активного поля ввода нового пароля

@@ -1,8 +1,8 @@
 import allure
 from selenium.webdriver.common.by import By
-from pages.page import Page
+from pages.base import PageBase
 
-class PagePersonalArea(Page):
+class PagePersonalArea(PageBase):
     # Поле ввода Имени в профиле (в личном кабинете)
     locator_input_name = (By.XPATH, ".//div//li[1]//input")
     # Поле ввода email  в профиле (в личном кабинете)

@@ -1,8 +1,8 @@
 import allure
-from pages.page import Page
+from pages.base import PageBase
 from selenium.webdriver.common.by import By
 
-class PagePasswordForget(Page):
+class PagePasswordForget(PageBase):
     # Поле ввода email при регистрации
     locator_input_email = (By.XPATH, ".//form/fieldset//input")
     # Кнопка "Восстановить"

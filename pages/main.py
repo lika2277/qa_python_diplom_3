@@ -2,9 +2,9 @@ import allure
 import random
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
-from pages.page import Page
+from pages.base import PageBase
 
-class PageMain(Page):
+class PageMain(PageBase):
     # Кнопка "Войти в аккаунт" 
     locator_entrance_in_account_button = (By.XPATH, ".//button[text()='Войти в аккаунт']")
     # Кнопка "Войти в аккаунт"

@@ -1,10 +1,14 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from data.urls import PageUrl
 
 class PageBase:
     def __init__(self, driver, timeout = 5):
         self.driver = driver
         self.timeout = timeout
+
+    def open(self, url=PageUrl.main):
+        self.driver.get(url)
 
     def find(self, locator):
         return self.driver.find_element(*locator)
