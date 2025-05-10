@@ -2,7 +2,7 @@ import requests
 
 class Ingredients:
     def __init__(self, url):
-        self.url = url + 'api/ingredients'
+        self.url = url
 
     def get_list_id_ingredient(self):
         response = requests.get(self.url)

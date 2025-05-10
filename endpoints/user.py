@@ -3,8 +3,8 @@ import random
 import string
 
 class User:
-    def __init__(self, url):
-        self.url = url
+    def __init__(self, urls):
+        self.urls = urls
         self.name = ''
         self.password = ''
         self.email = ''
@@ -13,7 +13,7 @@ class User:
 
     def create_user(self):
         user_data = self.gen_user_data()
-        response = requests.post(self.url + 'api/auth/register', data=user_data)
+        response = requests.post(self.urls.get('register'), data=user_data)
         if response.status_code == 200:
             self.name = user_data["name"]
             self.password = user_data["password"]
@@ -39,14 +39,14 @@ class User:
     def delete_user(self):
         self.login_user()
         headers = {'Authorization': self.accessToken}
-        response = requests.delete(self.url + 'api/auth/user', headers=headers)
+        response = requests.delete(self.urls.get('user'), headers=headers)
         return response
 
     def login_user(self):
         user_data = {"name": self.name,
                      "password": self.password,
                      "email": self.email}
-        response = requests.post(self.url + 'api/auth/login', data=user_data)
+        response = requests.post(self.urls.get('login'), data=user_data)
         if response.status_code == 200:
             self.accessToken = response.json()["accessToken"]
         return response

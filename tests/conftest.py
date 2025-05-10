@@ -12,14 +12,13 @@ from pages.password_reset import PagePasswordReset
 from pages.password_forget import PagePasswordForget
 from pages.personal_area import PagePersonalArea
 from pages.orders_feed import PageOrdersFeed
+from data.urls import PageUrl
 
 type WebDriver = Generator[ChromeDriver | FirefoxDriver, Any, None]
 
-url = 'https://stellarburgers.nomoreparties.site/'
-
 def pytest_addoption(parser):
     parser.addoption(
-        "--browser", action="store", default="firefox", help="supported browsers: chrome or firefox")
+        "--browser", action="store", default="chrome", help="supported browsers: chrome or firefox")
 
 @pytest.fixture()
 def browser(request) -> WebDriver:
@@ -36,7 +35,11 @@ def browser(request) -> WebDriver:
 
 @pytest.fixture()
 def user():
-    user = User(url)
+    user = User({
+        'register': PageUrl.auth_register,
+        'user': PageUrl.auth_user,
+        'login': PageUrl.auth_login
+    })
     user.create_user()
     yield user
     user.delete_user()
@@ -90,6 +93,6 @@ def personal_area(browser, login):
 
 @pytest.fixture()
 def order():
-    ingredients = Ingredients(url)
-    order = Order(url, ingredients)
+    ingredients = Ingredients(PageUrl.ingredients)
+    order = Order(PageUrl.order, ingredients)
     return order

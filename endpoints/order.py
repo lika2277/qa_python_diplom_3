@@ -3,7 +3,7 @@ from random import randint
 
 class Order:
     def __init__(self, url, ingredients):
-        self.url = url + 'api/orders'
+        self.url = url
         self.ingredients = ingredients
 
     def create_order_without_authorization(self, order_data):
